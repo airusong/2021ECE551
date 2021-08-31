@@ -1,5 +1,5 @@
-typedef struct {
+typedef struct _complex_num_t {
   double real_part;
-  double imagnary_part;
+  double imaginary_part;
 } complex_num_t;
-enum animal_t { CAT, FISH, SNAKE, DOG, HORSE };
+typedef enum _animal_t { CAT, FISH, SNAKE, DOG, HORSE } animal_t;
