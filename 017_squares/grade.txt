@@ -1,7 +1,296 @@
-Grading at 09/01/2021:19:44:50.079416
-For commit ID 73b948934ba3a666df45692c8a43981f4113f3e9
-Grading at Wed Sep  1 15:44:49 EDT 2021
+Grading at 09/01/2021:20:08:09.523113
+For commit ID 42539e7ffec922f00e69c4798753e300c16ccf41
+Grading at Wed Sep  1 16:08:05 EDT 2021
 Checking the syntax of your code in squares.c
-This code is not legal.  Please check the syntax.
+The code is legal, now testing its behavior.
+Checking squares(1,1, 1, 1)
+PASSED
+Checking squares(1,1, 1, 2)
+PASSED
+Checking squares(1,1, 1, 5)
+PASSED
+Checking squares(1,1, 1, 9)
+PASSED
+Checking squares(1,1, 3, 1)
+PASSED
+Checking squares(1,1, 3, 2)
+PASSED
+Checking squares(1,1, 3, 5)
+PASSED
+Checking squares(1,1, 3, 10)
+PASSED
+Checking squares(1,1, 6, 1)
+PASSED
+Checking squares(1,1, 6, 2)
+PASSED
+Checking squares(1,1, 6, 5)
+PASSED
+Checking squares(1,1, 6, 7)
+PASSED
+Checking squares(1,2, 1, 1)
+PASSED
+Checking squares(1,2, 1, 2)
+PASSED
+Checking squares(1,2, 1, 5)
+PASSED
+Checking squares(1,2, 1, 11)
+PASSED
+Checking squares(1,2, 3, 1)
+PASSED
+Checking squares(1,2, 3, 2)
+PASSED
+Checking squares(1,2, 3, 5)
+PASSED
+Checking squares(1,2, 3, 10)
+PASSED
+Checking squares(1,2, 6, 1)
+PASSED
+Checking squares(1,2, 6, 2)
+PASSED
+Checking squares(1,2, 6, 5)
+PASSED
+Checking squares(1,2, 6, 8)
+PASSED
+Checking squares(1,5, 1, 1)
+PASSED
+Checking squares(1,5, 1, 2)
+PASSED
+Checking squares(1,5, 1, 5)
+PASSED
+Checking squares(1,5, 1, 7)
+PASSED
+Checking squares(1,5, 3, 1)
+PASSED
+Checking squares(1,5, 3, 2)
+PASSED
+Checking squares(1,5, 3, 5)
+PASSED
+Checking squares(1,5, 3, 7)
+PASSED
+Checking squares(1,5, 8, 1)
+PASSED
+Checking squares(1,5, 8, 2)
+PASSED
+Checking squares(1,5, 8, 5)
+PASSED
+Checking squares(1,5, 8, 10)
+PASSED
+Checking squares(2,1, 1, 1)
+PASSED
+Checking squares(2,1, 1, 2)
+PASSED
+Checking squares(2,1, 1, 5)
+PASSED
+Checking squares(2,1, 1, 10)
+PASSED
+Checking squares(2,1, 3, 1)
+PASSED
+Checking squares(2,1, 3, 2)
+PASSED
+Checking squares(2,1, 3, 5)
+PASSED
+Checking squares(2,1, 3, 10)
+PASSED
+Checking squares(2,1, 6, 1)
+PASSED
+Checking squares(2,1, 6, 2)
+PASSED
+Checking squares(2,1, 6, 5)
+PASSED
+Checking squares(2,1, 6, 10)
+PASSED
+Checking squares(2,2, 1, 1)
+PASSED
+Checking squares(2,2, 1, 2)
+PASSED
+Checking squares(2,2, 1, 5)
+PASSED
+Checking squares(2,2, 1, 7)
+PASSED
+Checking squares(2,2, 3, 1)
+PASSED
+Checking squares(2,2, 3, 2)
+PASSED
+Checking squares(2,2, 3, 5)
+PASSED
+Checking squares(2,2, 3, 7)
+PASSED
+Checking squares(2,2, 5, 1)
+PASSED
+Checking squares(2,2, 5, 2)
+PASSED
+Checking squares(2,2, 5, 5)
+PASSED
+Checking squares(2,2, 5, 9)
+PASSED
+Checking squares(2,5, 1, 1)
+PASSED
+Checking squares(2,5, 1, 2)
+PASSED
+Checking squares(2,5, 1, 5)
+PASSED
+Checking squares(2,5, 1, 9)
+PASSED
+Checking squares(2,5, 3, 1)
+PASSED
+Checking squares(2,5, 3, 2)
+PASSED
+Checking squares(2,5, 3, 5)
+PASSED
+Checking squares(2,5, 3, 7)
+PASSED
+Checking squares(2,5, 5, 1)
+PASSED
+Checking squares(2,5, 5, 2)
+PASSED
+Checking squares(2,5, 5, 5)
+PASSED
+Checking squares(2,5, 5, 9)
+PASSED
+Checking squares(3,1, 1, 1)
+PASSED
+Checking squares(3,1, 1, 2)
+PASSED
+Checking squares(3,1, 1, 5)
+PASSED
+Checking squares(3,1, 1, 9)
+PASSED
+Checking squares(3,1, 3, 1)
+PASSED
+Checking squares(3,1, 3, 2)
+PASSED
+Checking squares(3,1, 3, 5)
+PASSED
+Checking squares(3,1, 3, 11)
+PASSED
+Checking squares(3,1, 8, 1)
+PASSED
+Checking squares(3,1, 8, 2)
+PASSED
+Checking squares(3,1, 8, 5)
+PASSED
+Checking squares(3,1, 8, 9)
+PASSED
+Checking squares(3,2, 1, 1)
+PASSED
+Checking squares(3,2, 1, 2)
+PASSED
+Checking squares(3,2, 1, 5)
+PASSED
+Checking squares(3,2, 1, 9)
+PASSED
+Checking squares(3,2, 3, 1)
+PASSED
+Checking squares(3,2, 3, 2)
+PASSED
+Checking squares(3,2, 3, 5)
+PASSED
+Checking squares(3,2, 3, 10)
+PASSED
+Checking squares(3,2, 8, 1)
+PASSED
+Checking squares(3,2, 8, 2)
+PASSED
+Checking squares(3,2, 8, 5)
+PASSED
+Checking squares(3,2, 8, 10)
+PASSED
+Checking squares(3,4, 1, 1)
+PASSED
+Checking squares(3,4, 1, 2)
+PASSED
+Checking squares(3,4, 1, 5)
+PASSED
+Checking squares(3,4, 1, 11)
+PASSED
+Checking squares(3,4, 3, 1)
+PASSED
+Checking squares(3,4, 3, 2)
+PASSED
+Checking squares(3,4, 3, 5)
+PASSED
+Checking squares(3,4, 3, 8)
+PASSED
+Checking squares(3,4, 7, 1)
+PASSED
+Checking squares(3,4, 7, 2)
+PASSED
+Checking squares(3,4, 7, 5)
+PASSED
+Checking squares(3,4, 7, 7)
+PASSED
+Checking squares(5,1, 1, 1)
+PASSED
+Checking squares(5,1, 1, 2)
+PASSED
+Checking squares(5,1, 1, 5)
+PASSED
+Checking squares(5,1, 1, 10)
+PASSED
+Checking squares(5,1, 3, 1)
+PASSED
+Checking squares(5,1, 3, 2)
+PASSED
+Checking squares(5,1, 3, 5)
+PASSED
+Checking squares(5,1, 3, 11)
+PASSED
+Checking squares(5,1, 8, 1)
+PASSED
+Checking squares(5,1, 8, 2)
+PASSED
+Checking squares(5,1, 8, 5)
+PASSED
+Checking squares(5,1, 8, 8)
+PASSED
+Checking squares(5,2, 1, 1)
+PASSED
+Checking squares(5,2, 1, 2)
+PASSED
+Checking squares(5,2, 1, 5)
+PASSED
+Checking squares(5,2, 1, 7)
+PASSED
+Checking squares(5,2, 3, 1)
+PASSED
+Checking squares(5,2, 3, 2)
+PASSED
+Checking squares(5,2, 3, 5)
+PASSED
+Checking squares(5,2, 3, 11)
+PASSED
+Checking squares(5,2, 8, 1)
+PASSED
+Checking squares(5,2, 8, 2)
+PASSED
+Checking squares(5,2, 8, 5)
+PASSED
+Checking squares(5,2, 8, 10)
+PASSED
+Checking squares(5,5, 1, 1)
+PASSED
+Checking squares(5,5, 1, 2)
+PASSED
+Checking squares(5,5, 1, 5)
+PASSED
+Checking squares(5,5, 1, 8)
+PASSED
+Checking squares(5,5, 3, 1)
+PASSED
+Checking squares(5,5, 3, 2)
+PASSED
+Checking squares(5,5, 3, 5)
+PASSED
+Checking squares(5,5, 3, 10)
+PASSED
+Checking squares(5,5, 6, 1)
+PASSED
+Checking squares(5,5, 6, 2)
+PASSED
+Checking squares(5,5, 6, 5)
+PASSED
+Checking squares(5,5, 6, 8)
+PASSED
+Passed 144 out of 144 tests
 
-Overall Grade: F
+Overall Grade: A
