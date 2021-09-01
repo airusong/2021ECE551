@@ -1,6 +1,6 @@
-Grading at 09/01/2021:17:43:23.006778
-For commit ID 2221acab6caec69b7ccf18ecc9f6c2c940dad31e
-Grading at Wed Sep  1 13:43:22 EDT 2021
+Grading at 09/01/2021:17:56:27.245067
+For commit ID a82cbb2059610b5ac3b714cdeafce2fa00bda388
+Grading at Wed Sep  1 13:56:26 EDT 2021
 Checking code2.c for legal syntax
 Checking for int printTriangle (int size)
 Found on line 3, column 1 
@@ -17,9 +17,9 @@ Testing printTriangle(4) ... Correct
 Testing printTriangle(7) ... Correct
 Testing printTriangle(9) ... Correct
 Testing printTriangle(12) ... Correct
-Testing printTriangle(134) ... Correct
-Testing printTriangle(112) ... Correct
-Testing printTriangle(1405) ... Correct
-Testing printTriangle(2519) ... Correct
+Testing printTriangle(45) ... Correct
+Testing printTriangle(106) ... Correct
+Testing printTriangle(1048) ... Correct
+Testing printTriangle(2480) ... Correct
 
 Overall Grade: A
