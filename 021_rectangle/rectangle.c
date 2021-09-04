@@ -34,10 +34,25 @@ rectangle canonicalize(rectangle r) {
   return r;
 }
 rectangle intersection(rectangle r1, rectangle r2) {
-  r1.x = max(r1.x, r2.x);
-  r1.y = max(r1.y, r2.y);
-  r1.width = min(r1.x + r1.width, r2.x + r2.width) - r1.x;
-  r1.height = min(r1.y + r1.height, r2.y + r2.height) - r1.y;  //WRITE THIS FUNCTION
+  rectangle r;
+  r1 = canonicalize(r1);
+  r2 = canonicalize(r2);
+  r.x = max(r1.x, r2.x);
+  r.y = max(r1.y, r2.y);
+  r.width = min(r1.x + r1.width, r2.x + r2.width) - r.x;
+  r.height = min(r1.y + r1.height, r2.y + r2.height) - r.y;
+  r1.x = r.x;
+  r1.y = r.y;
+  r1.width = r.width;
+  r1.height = r.height;
+  if (r1.width < 0) {
+    r1.width = 0;
+    r1.height = 0;
+  }
+  if (r1.height < 0) {
+    r1.height = 0;
+    r1.width = 0;
+  }  //WRITE THIS FUNCTION
   return r1;
 }
 
