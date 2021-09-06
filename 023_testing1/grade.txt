@@ -1,51 +1,21 @@
-Grading at 09/06/2021:16:49:24.118199
-For commit ID 347e1ac11be1d15101e9bf6068a117d7e471927a
-Grading at Mon Sep  6 12:49:24 EDT 2021
+Grading at 09/06/2021:18:45:33.652472
+For commit ID 20fd6887ed0743ecdf3ea4decb1b794b31c7531c
+Grading at Mon Sep  6 14:45:33 EDT 2021
 #################################################
 test input.1:
 Your file matched the expected output
 input.1 passed
 #################################################
 test input.2:
-I expected to find a file called 'input.2' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-correct.txt
-input.1
-isPrime-broken1
-isPrime-broken2
-isPrime-broken3
-isPrime-broken4
-isPrime-correct
-README
-student.txt
+Your file matched the expected output
+input.2 passed
 #################################################
 test input.3:
-I expected to find a file called 'input.3' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-correct.txt
-input.1
-isPrime-broken1
-isPrime-broken2
-isPrime-broken3
-isPrime-broken4
-isPrime-correct
-README
-student.txt
+Your file matched the expected output
+input.3 passed
 #################################################
 test input.4:
-I expected to find a file called 'input.4' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-correct.txt
-input.1
-isPrime-broken1
-isPrime-broken2
-isPrime-broken3
-isPrime-broken4
-isPrime-correct
-README
-student.txt
+Your file matched the expected output
+input.4 passed
 
-Overall Grade: D
+Overall Grade: A
