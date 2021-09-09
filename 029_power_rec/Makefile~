@@ -1,0 +1,2 @@
+Power: Power.o test-power.o
+      gcc -o Power Power
