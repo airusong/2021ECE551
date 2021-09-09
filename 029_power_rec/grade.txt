@@ -1,13 +1,13 @@
-Grading at 09/09/2021:03:02:37.742167
-For commit ID 3e95ba4287d7221939d5212ef1a0244f3b9e138f
-Grading at Wed Sep  8 23:02:36 EDT 2021
+Grading at 09/09/2021:03:56:43.036467
+For commit ID 4b67b4431e456816ddb840d6b345d80108b6f133
+Grading at Wed Sep  8 23:56:42 EDT 2021
 Attempting to compile power.c
 Attempting to compile power.o with our main
 Checking for unsigned power (unsigned x, unsigned y)
 Found on line 3, column 1 
 Checking for no iteration (do, while, for)
 Checking that power is recursive
-0^0 was Incorrect
+0^0 was Correct
 0^1 was Correct
 0^2 was Correct
 0^6 was Correct
@@ -19,29 +19,29 @@ Checking that power is recursive
 1^6 was Correct
 1^8 was Correct
 1^11 was Correct
-4^0 was Incorrect
-4^1 was Incorrect
-4^2 was Incorrect
-4^6 was Incorrect
-4^8 was Incorrect
-4^11 was Incorrect
-5^0 was Incorrect
-5^1 was Incorrect
-5^2 was Incorrect
-5^6 was Incorrect
-5^8 was Incorrect
-5^11 was Incorrect
-9^0 was Incorrect
-9^1 was Incorrect
-9^2 was Incorrect
-9^6 was Incorrect
-9^8 was Incorrect
-9^11 was Incorrect
-12^0 was Incorrect
-12^1 was Incorrect
-12^2 was Incorrect
-12^6 was Incorrect
-12^8 was Incorrect
-12^11 was Incorrect
+4^0 was Correct
+4^1 was Correct
+4^2 was Correct
+4^6 was Correct
+4^8 was Correct
+4^11 was Correct
+5^0 was Correct
+5^1 was Correct
+5^2 was Correct
+5^6 was Correct
+5^8 was Correct
+5^11 was Correct
+9^0 was Correct
+9^1 was Correct
+9^2 was Correct
+9^6 was Correct
+9^8 was Correct
+9^11 was Correct
+12^0 was Correct
+12^1 was Correct
+12^2 was Correct
+12^6 was Correct
+12^8 was Correct
+12^11 was Correct
 
-Overall Grade: F
+Overall Grade: A
