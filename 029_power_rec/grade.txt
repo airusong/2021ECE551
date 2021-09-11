@@ -1,13 +1,13 @@
-Grading at 09/11/2021:21:06:39.533978
-For commit ID 52c9dac89bcea1d68e6473a397206b8935f79e4e
-Grading at Sat Sep 11 17:06:36 EDT 2021
+Grading at 09/11/2021:21:16:34.158492
+For commit ID 3e582c3cc8913c27809ba71fcb5680e73781cf42
+Grading at Sat Sep 11 17:16:33 EDT 2021
 Attempting to compile power.c
 Attempting to compile power.o with our main
 Checking for unsigned power (unsigned x, unsigned y)
 Found on line 3, column 1 
 Checking for no iteration (do, while, for)
 Checking that power is recursive
-0^0 was Incorrect
+0^0 was Correct
 0^1 was Correct
 0^2 was Correct
 0^6 was Correct
@@ -44,4 +44,4 @@ Checking that power is recursive
 12^8 was Correct
 12^11 was Correct
 
-Overall Grade: C
+Overall Grade: A
