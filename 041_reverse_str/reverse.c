@@ -3,17 +3,18 @@
 #include <string.h>
 
 void reverse(char * str) {
-  size_t i = 0;
-  size_t j = strlen(str) - 1;
-  if (*str == '\0' || strlen(str) == 1) {
+  if (!str) {
     return;
   }
-  while (i < j) {
-    char temp = str[i];
-    str[i] = str[j];
-    str[j] = temp;
-    i++;
-    j--;
+  char * pos = str;
+  char * pos2 = pos + strlen(str) - 1;
+  size_t n = strlen(str);
+  for (size_t i = 0; i < n / 2; i++) {
+    char c = *pos;
+    *pos = *pos2;
+    *pos2 = c;
+    pos++;
+    pos2--;
   }  //WRITE ME!
 }
 
