@@ -8,10 +8,6 @@ input4.txt
 input5.txt
 input6.txt
 input7.txt
-
 input8.txt
 input9.txt
 input10.txt
-1;4205;0cffg
-55h 77h
---;'Nake')(
