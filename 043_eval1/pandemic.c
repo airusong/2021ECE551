@@ -1,5 +1,7 @@
 #include "pandemic.h"
 
+#include <string.h>
+
 #include "ctype.h"
 #include "inttypes.h"
 #include "stdio.h"
@@ -8,6 +10,15 @@ country_t parseLine(char * line) {
   //WRITE ME
   const char * point = line;
   country_t ans;
+  if (line == NULL) {  //check if the line is null or not
+    fprintf(stderr, "The line pointer is null\n");
+    exit(EXIT_FAILURE);
+  }
+  if (strchr(line, ',') == NULL) {  //check if the line has a comma or not
+    fprintf(stderr, "The line do not have a comma\n");
+    exit(EXIT_FAILURE);
+  }
+
   ans.name[0] = '\0';
   ans.population = 0;
   int i = 0;
@@ -20,14 +31,14 @@ country_t parseLine(char * line) {
     ans.name[i] = '\0';
   }
   if (i == MAX_NAME_LEN && *point != ',') {
-    fprintf(stderr, "Country name larger than 64 bits or invalid input without a comma");
+    fprintf(stderr, "Country name larger than 64 bits");
     exit(EXIT_FAILURE);
   }
   //read digit
   if (*point == ',') {
     point++;
   }
-  while (*point >= '0' && *point <= '9') {
+  while (*point >= '0' && *point <= '9') {  //transform the population value
     ans.population = ans.population * 10 + (uint64_t)(*point - '0');
     point++;
   }
@@ -42,9 +53,12 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   const unsigned * dataP = data;
   double * avgPointer = avg;  //WRITE ME
   if (data == NULL) {
-    exit(EXIT_FAILURE);
+    exit(EXIT_FAILURE);  //check if data is null
   }
-  for (size_t i = 0; i < n_days - 6; i++) {
+  if (n_days <= 6) {
+    exit(EXIT_FAILURE);  //check if the date is right
+  }
+  for (size_t i = 0; i < n_days - 6; i++) {  //caculate the average
     *avgPointer = (double)(*dataP + *(dataP + 1) + *(dataP + 2) + *(dataP + 3) +
                            *(dataP + 4) + *(dataP + 5) + *(dataP + 6)) /
                   7;
@@ -88,6 +102,7 @@ void printCountryWithMax(country_t * countries,
   }
   unsigned max = data[0][0];
   size_t maxRow = 0;
+  //find the max index of the matrix
   for (size_t i = 0; i < n_countries; i++) {
     for (size_t j = 0; j < n_days; j++) {
       if (data[i][j] > max) {
