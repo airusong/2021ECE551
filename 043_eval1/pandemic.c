@@ -18,7 +18,6 @@ country_t parseLine(char * line) {
     fprintf(stderr, "The line do not have a comma\n");
     exit(EXIT_FAILURE);
   }
-
   ans.name[0] = '\0';
   ans.population = 0;
   int i = 0;
@@ -43,7 +42,11 @@ country_t parseLine(char * line) {
     point++;
   }
   if (*point != '\n') {
-    fprintf(stderr, "population is wrong");
+    fprintf(stderr, "the population is invalid");
+    exit(EXIT_FAILURE);
+  }
+  if (ans.population == 0) {
+    fprintf(stderr, "The population cannot be 0!\n");
     exit(EXIT_FAILURE);
   }
   return ans;
