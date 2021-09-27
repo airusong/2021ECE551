@@ -1,14 +1,7 @@
-Grading at 09/27/2021:02:29:15.433197
-For commit ID 8a6ca8395f829ac8765de3e9d7197b0f26ec906c
-Grading at Sun Sep 26 22:29:11 EDT 2021
+Grading at 09/27/2021:02:50:22.927843
+For commit ID f0b24c5f347dab122ef0863080b1462841e55b2f
+Grading at Sun Sep 26 22:50:19 EDT 2021
 Running your test cases
-
-Compiling printDailyMax
-rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
-+-----------------------------------------------------------------------+
-Test case printDailyMax population.csv
-Your program successfully indicated a failure case
 
 Compiling printCountries
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
