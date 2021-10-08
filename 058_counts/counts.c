@@ -20,7 +20,7 @@ void addCount(counts_t * c, const char * name) {
   else {
     int check = 1;
     for (int i = 0; i < c->size; i++) {
-      if (*name == *c->array[i]->string) {  //WRITE ME
+      if (!strcmp(c->array[i]->string, name)) {  //WRITE ME
         c->array[i]->time++;
         check = 0;
       }
@@ -30,7 +30,7 @@ void addCount(counts_t * c, const char * name) {
       c->array = realloc(c->array, (c->size) * sizeof(*(c->array)));
       one_count_t * onecount = malloc(sizeof(*onecount));
       c->array[c->size - 1] = onecount;
-      c->array[c->size - 1]->string = name;
+      c->array[c->size - 1]->string = strdup(name);
       c->array[c->size - 1]->time = 1;
     }
   }
@@ -48,6 +48,7 @@ void printCounts(counts_t * c, FILE * outFile) {
 
 void freeCounts(counts_t * c) {
   for (int i = 0; i < c->size; i++) {
+    free(c->array[i]->string);
     free(c->array[i]);
   }
   free(c->array);

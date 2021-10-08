@@ -3,7 +3,7 @@
 #include <stdio.h>
 struct _one_count_t {
   int time;
-  const char * string;  //DEFINE ME
+  char * string;  //DEFINE ME
 };
 typedef struct _one_count_t one_count_t;
 
