@@ -1,51 +1,167 @@
-Grading at 09/27/2021:05:00:56.676630
+Grading at 10/15/2021:19:03:18.288719
 For commit ID 13efd3bb6f5e48cddba2c98cd122ac513e641995
-Grading at Mon Sep 27 01:00:52 EDT 2021
-Running your test cases
+Grading at Fri Oct 15 15:03:00 EDT 2021
 
-Compiling printCountries
+Checking that your code compiles
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
-+-----------------------------------------------------------------------+
-Test case printCountries invalid.csv
-Our printCountries does not consider this an error case
-
-Compiling printDailyMax
-rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
-+-----------------------------------------------------------------------+
-Test case printDailyMax population.csv
-Your program successfully indicated a failure case
-
-Compiling printCountries
-rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
-+-----------------------------------------------------------------------+
-Test case printCountries population.csv
-Your file matched the expected output
-
-Compiling printDailyMax
-rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
-+-----------------------------------------------------------------------+
-Test case printDailyMax population.csv daily_small.csv
-Your file matched the expected output
-
-Compiling printCumulative
-rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o printCumulative
-+-----------------------------------------------------------------------+
-Test case printCumulative population.csv daily_small.csv
-Your file matched the expected output
-
-Compiling printRunningAvg
-rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printRunningAvg.o -o printRunningAvg
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o printCumulative
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
+
+=========================================================================
+Step 1
+
 +-----------------------------------------------------------------------+
-Test case printRunningAvg population.csv daily_small.csv
+Test case 1
+Your program successfully indicated a failure case
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 2
+Your program did not indicate a failure case
+                                                         [0/3]
++-----------------------------------------------------------------------+
+Test case 3
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 4
+Your program did not indicate a failure case
+                                                         [0/2]
++-----------------------------------------------------------------------+
+Test case 5
 Your file matched the expected output
+                                                         [10/10]
++-----------------------------------------------------------------------+
+Test case 6
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 7
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 8
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 9
+Your file matched the expected output
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 10
+Your file matched the expected output
+                                                         [1/1]
 
-You have FAILED one or more of your test cases
-Keep debugging
+Step 1 total                                             [25/30]
 
-Overall Grade: NO GRADE YET
+=========================================================================
+Step 2
+
++-----------------------------------------------------------------------+
+Test case 11
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 12
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 13
+Your file did not match the expected output
+                                                         [0/2]
++-----------------------------------------------------------------------+
+Test case 14
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 15
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 16
+Your file matched the expected output
+                                                         [3/3]
+
+Step 2 total                                             [18/20]
+
+=========================================================================
+Step 3
+
++-----------------------------------------------------------------------+
+Test case 17
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 18
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 19
+Your file did not match the expected output
+                                                         [0/2]
++-----------------------------------------------------------------------+
+Test case 20
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 21
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 22
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 23
+Your file matched the expected output
+                                                         [2/2]
+
+Step 3 total                                             [18/20]
+
+=========================================================================
+Step 4
+
++-----------------------------------------------------------------------+
+Test case 24
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 25
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 26
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 27
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 28
+Your file matched the expected output
+                                                         [4/4]
+
+Step 4 total                                             [20/20]
+
+=========================================================================
+Code quality
+
+Abstration:    Good
+Naming:        Good
+Formatting:    Excellent
+Documentation: OK
+Comments from your grader:
+There is no abstraction at all, but it is OK for this eval homework. You might 
+provide some abstraction in later homeworks. For example, checking the validity 
+of the input can be extracted. You will not want to use a variable called "max" 
+or "min", because these are function names. Using "i" as index out of for loops 
+is also not a good habit. The documentation is not quite satisfying. It is 
+better to illustrate the functionalities of each funtion before the function.
+
+Quality total                                            [8.5/10]
+
+=========================================================================
+
+Overall Grade: 90
