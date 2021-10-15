@@ -5,6 +5,29 @@
 #include <string.h>
 //char * findWord(char * cat, catarray_t * cats, category_t * track) {
 //}
+char * getName(char * curr) {
+}
+char * getWord(char * curr) {
+}
+int checkduplicateName(char * name, catarray_t * cats) {
+}
+catarray_t * readfromwords(FILE * f) {
+  catarray_t * ans = malloc(sizeof(*ans));
+  ans->arr = NULL;
+  ans->n = 0;
+  char * curr = NULL;
+  size_t sz = 0;
+  size_t i = 0;
+  while ((getline(&curr, &sz, f)) >= 0) {
+    char * name = getName(curr);
+    char * word = getWord(curr);
+    if (!(checkduplicateName(name, ans))) {
+    }
+    else {
+    }
+  }
+  return ans;
+}
 char * substitute(char * line, catarray_t * cats, int reuse, category_t * track) {
   char * ptr = line;
   char * result = NULL;
