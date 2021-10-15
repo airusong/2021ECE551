@@ -11,7 +11,9 @@ struct text_tag {
 typedef struct text_tag text_t;
 const char * chooseWord(char * category, catarray_t * cats);
 void printWords(catarray_t * cats);
-text_t * parseStory(FILE * f);
+text_t * parseStory(FILE * f, catarray_t * cats, int reuse);
+void printOut(text_t * t);
+void freeText(text_t * t);
 //any functions you want your main to use
 
 #endif
