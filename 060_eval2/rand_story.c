@@ -6,10 +6,51 @@
 //char * findWord(char * cat, catarray_t * cats, category_t * track) {
 //}
 char * getName(char * curr) {
+  char * ptr = strchr(curr, ':');
+  if (ptr == NULL) {
+    fprintf(stderr, "invalid name and words input");
+    exit(EXIT_FAILURE);
+  }
+  *ptr = '\0';  //seperate name and words
+  char * name = strdup(curr);
+  return name;
 }
+
 char * getWord(char * curr) {
+  char * ptr1 = strchr(curr, ':');
+  if (ptr1 == NULL) {  //situation without semicolon
+    fprintf(stderr, "invalid name and words input");
+    exit(EXIT_FAILURE);
+  }
+
+  char * ptr2 = strchr(curr, '\n');
+  if (ptr2 != NULL) {
+    *ptr2 = '0';  //strip newline at the end of one line
+  }
+  ptr1 += 1;
+  char * word = strdup(ptr1);
+  return word;
 }
+
 int checkduplicateName(char * name, catarray_t * cats) {
+  for (size_t i = 0; i < cats->n; i++) {
+    //if already have the category name
+    if (!strcmp(name, cats->arr[i].name)) {
+      return 1;
+    }
+  }
+  return 0;
+}
+void addName(catarray_t * cat, char * name, char * word) {
+  cat->arr = realloc(cat->arr, cat->n * sizeof(*cat->arr));
+  cat->arr[cat->n].name = name;
+  cat->arr[(cat->n)].n_words = 0;
+  cat->arr[(cat->n)].words = NULL;
+  cat->arr[(cat->n)].words =
+      realloc(cat->arr[(cat->n)].words,
+              (cat->arr[cat->n].n_words + 1) * sizeof(*(cat->arr[(cat->n)].words)));
+  cat->arr[(cat->n)].words[0] = word;
+  cat->n++;
 }
 catarray_t * readfromwords(FILE * f) {
   catarray_t * ans = malloc(sizeof(*ans));
@@ -22,8 +63,11 @@ catarray_t * readfromwords(FILE * f) {
     char * name = getName(curr);
     char * word = getWord(curr);
     if (!(checkduplicateName(name, ans))) {
+      //no duplicate, add a new category name
+      addName(ans, name, word);
     }
     else {
+      //duplicate name, add a new word
     }
   }
   return ans;
