@@ -34,7 +34,7 @@ int checkduplicateName(char * name, catarray_t * cats) {
 }
 void removeWords(const char * word, catarray_t * cats, size_t index) {
   //make sure the word index in the category
-  //1.first find the category struct,
+  //   first find the category struct,
   //   compare each word with the used word
   size_t pos = 0;
   for (size_t i = 0; i < (cats->arr[index]).n_words; i++) {
@@ -42,33 +42,36 @@ void removeWords(const char * word, catarray_t * cats, size_t index) {
       pos = i;
     }
   }
-  category_t * ans = malloc(sizeof(*ans));
-  ans->name = strdup(cats->arr[index].name);
-  ans->n_words = 0;
-  ans->words = NULL;
+  category_t
+      ans;  //create a new category struct to save the unused word under the category
+  ans.name = cats->arr[index].name;
+  ans.n_words = 0;
+  ans.words = NULL;
 
   size_t i = 0;
-  //char ** arr = malloc((cats->arr[index].n_words - 1) * sizeof(*arr));
   for (size_t j = 0; j < (cats->arr[index]).n_words; j++) {
     if (j == pos) {
-      continue;
+      continue;  //skip the used word
     }
-    ans->words = realloc(ans->words, (i + 1) * sizeof(*(ans->words)));
-    ans->words[i] = cats->arr[index].words[j];
+    ans.words = realloc(
+        ans.words,
+        (i + 1) * sizeof(*(ans.words)));  //reallocate new position for the next word
+    ans.words[i] = cats->arr[index].words[j];
+    cats->arr[index].words[j] = NULL;
     i++;
   }
-  ans->n_words = i;
-  //  free(cats->arr[index].words[pos]);
+  ans.n_words = i;  //the number of the word after deletion
   cats->arr[index].n_words--;
+  //free the initial word array under that category and allocate a new array to save the unused words array
   free(cats->arr[index].words);
   cats->arr[index].words =
       malloc(cats->arr[index].n_words * sizeof(*cats->arr[index].words));
+  //use a for loop to to save the new word array
   for (size_t i = 0; i < cats->arr[index].n_words; i++) {
-    cats->arr[index].words[i] = strdup(ans->words[i]);
-    //cats->arr[index].words[i] = arr[i];
+    cats->arr[index].words[i] = ans.words[i];
+    ans.words[i] = NULL;
   }
-  //free(arr);
-  freeCategory(ans);
+  ans.name = NULL;
 }
 const char * findWord(char * cat, catarray_t * cats, category_t * used, int reuse) {
   if (cats == NULL) {
@@ -160,7 +163,7 @@ catarray_t * readfromwords(
     }
     else {
       free(name);  //duplicate name, just add a new word
-      addWord(ans, word, (unsigned int)(index));
+      addWord(ans, word, index);
     }
     //    curr = NULL;
   }
