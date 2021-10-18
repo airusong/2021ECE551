@@ -13,6 +13,10 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "%s does not exist\n", argv[1]);
     return EXIT_FAILURE;
   }
+  catarray_t * ans = readfromwords(f);
+  printWords(ans);
+  freeCatArray(ans);
+
   if (fclose(f) == -1) {
     fprintf(stderr, "can't close file");
     return EXIT_FAILURE;

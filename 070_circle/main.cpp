@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "circle.hpp"
+#include "circle.h"
 
 //You might notice a LOT of code duplication with repsect
 //to the previous problem:  we will see later how we could
