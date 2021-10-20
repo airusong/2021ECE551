@@ -93,7 +93,7 @@ const char * findWord(char * cat, catarray_t * cats, category_t * used, int reus
   //category name is a valid integer of at least one,replace
   //the blank with a previously used word
   size_t number = (unsigned int)(atoi(cat));
-  if (number <= used->n_words && number >= 1) {
+  if (number <= used->n_words && number >= 1 && check(cat) == 1) {
     const char * usedword = used->words[used->n_words - number];
     return usedword;
   }  // If a category name is neither a
@@ -255,7 +255,9 @@ text_t * parseStory(FILE * f,
   size_t i = 0;
   category_t * used = createUsed();
   text_t * ans = malloc(sizeof(*ans));
-  while (getline(&curr, &sz, f) >= 0) {
+  while (
+      getline(&curr, &sz, f) >=
+      0) {  //read the initial story file line by line and store it in the text_t struct
     ans->input = realloc(ans->input, (i + 1) * sizeof(*ans->input));
     curr = substitute(curr, cats, reuse, used);
     ans->input[i] = strdup(curr);
