@@ -27,7 +27,7 @@ class LinkedList {
   LinkedList() : head(NULL), tail(NULL), size(0) {}
   LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(0) {
     Node * curr = rhs.head;
-    for (int i = 0; i < rhs.size; i++) {
+    while (curr != NULL) {
       addBack(curr->data);
       curr = curr->next;
     }
@@ -41,31 +41,31 @@ class LinkedList {
     }
     return *this;
   }
+
   bool remove(const T & item) {
-    Node * curr = head;
-    while (curr != NULL) {
-      if (curr->data == item) {
-        break;
-      }
-      curr = curr->next;
+    Node * traverse = head;
+    while (traverse != NULL && traverse->data != item) {
+      traverse = traverse->next;
     }
-    if (curr == NULL) {
+    if (traverse == NULL) {
       return false;
     }
-    Node * currNext = curr->next;
-    Node * currPrev = curr->prev;
-    if (currNext != NULL && currPrev != NULL) {
-      currNext->prev = currPrev;
-      currPrev->next = currNext;
+    Node * nextN = traverse->next;
+    Node * prevN = traverse->prev;
+    if (nextN != NULL) {
+      nextN->prev = prevN;
     }
-    if (currNext == NULL) {
-      tail = currPrev;
+    else {
+      tail = prevN;
     }
-    if (currPrev == NULL) {
-      head = currNext;
+    if (prevN != NULL) {
+      prevN->next = nextN;
     }
-    delete curr;
-    size--;
+    else {
+      head = nextN;
+    }
+    size -= 1;
+    delete traverse;
     return true;
   }
 
@@ -121,11 +121,11 @@ class LinkedList {
     Node * curr = head;
     int pos = 0;
     while (curr != NULL) {
-      curr = curr->next;
-      pos++;
       if (pos == index) {
         break;
       }
+      curr = curr->next;
+      pos++;
     }
     return curr->data;
   }
@@ -136,14 +136,15 @@ class LinkedList {
     Node * curr = head;
     int pos = 0;
     while (curr != NULL) {
-      curr = curr->next;
-      pos++;
       if (pos == index) {
         break;
       }
+      curr = curr->next;
+      pos++;
     }
     return curr->data;
   }
+  friend void testList(void);
 };
 
 //YOUR CODE GOES HERE
