@@ -1,0 +1,17 @@
+#ifndef _STORY_H__
+#define _STORY_H__
+#include <set>
+#include <stack>
+#include <string>
+
+#include "page.h"
+//step2
+std::string getPname(const char * directory) {
+  std::string pagename;
+}
+std::vector<page *> readStory(char * directory) {
+  std::vector<page *> page;
+  std::string pagename = getPname(directory);
+  page * page_num = new page(pagename);
+}
+#endif

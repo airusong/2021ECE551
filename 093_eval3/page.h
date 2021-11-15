@@ -16,6 +16,9 @@ class page {
   std::string result;
   std::vector<std::string> text;
 
+  std::vector<int> choiceNum;
+  int pageNum;
+
   page(std::ifstream & f) {
     std::string line;
     std::string newLine;
