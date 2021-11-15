@@ -25,6 +25,8 @@ class page {
     std::string str1("WIN");
     std::string str2("LOSE");
     int flag = 0;
+    int pos1 = 0;
+    int num = 0;
     while (getline(f, line)) {
       if (line[0] == '#') {
         // line.clear();
@@ -42,6 +44,9 @@ class page {
       }
       else {
         choice.push_back(line);
+        pos1 = line.find(":");
+        num = atoi(line.substr(0, pos1).c_str());
+        choiceNum.push_back(num);
       }
     }
     std::string line2;
