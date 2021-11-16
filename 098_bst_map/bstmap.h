@@ -1,123 +1,162 @@
-#ifndef _BSTMAP_H__
-#define _BSTMAP_H__
-
+#ifndef __BSTMAP_H__
+#define __BSTMAP_H__
+#include <cstdio>
 #include <cstdlib>
+#include <iostream>
 #include <stdexcept>
 
-#include "assert.h"
 #include "map.h"
 
 template<typename K, typename V>
 class BstMap : public Map<K, V> {
  private:
+  //Nodes
   class Node {
    public:
     K key;
     V value;
     Node * left;
     Node * right;
-    Node(K key, V value) : key(key), value(value), left(NULL), right(NULL) {}
+    //constructor for Nodes
+    Node() : key(0), value(0), left(NULL), right(NULL) {}
+    //constructor for add
+    Node(const K & k, const V & v) : key(k), value(v), left(NULL), right(NULL) {}
   };
+  //root
   Node * root;
 
  public:
+  //default constructor
   BstMap() : root(NULL) {}
-  virtual void add(const K & key, const V & value) {
-    if (root == NULL) {
-      root = new Node(key, value);
+
+  //copy constructor
+  BstMap(const BstMap & rhs) : root(NULL) { root = copy(rhs.root); }
+
+  //cooy helper
+  Node * copy(Node * current) {
+    if (current == NULL) {
+      return NULL;
     }
-    else {
-      Node * traversal = root;
-      while (true) {
-        if (key > traversal->key) {
-          if (traversal->right == NULL) {
-            traversal->right = new Node(key, value);
-            break;
-          }
-          else {
-            traversal = traversal->right;
-          }
+    Node * root = new Node(current->key, current->value);
+    root->left = copy(current->left);
+    root->right = copy(current->right);
+    return root;
+  }
+
+  //assignment constructor
+  BstMap & operator=(const BstMap & rhs) {
+    if (this != &rhs) {
+      destroy(root);
+      root = copy(rhs.root);
+    }
+    return *this;
+  }
+
+  //destroy helper
+  void destroy(Node * current) {
+    if (current != NULL) {
+      destroy(current->left);
+      destroy(current->right);
+      delete current;
+    }
+  }
+
+  //destructor
+  virtual ~BstMap<K, V>() {
+    destroy(root);
+    root = NULL;
+  }
+
+  //add a Node
+  virtual void add(const K & key, const V & value) {
+    Node ** current = &root;
+    while (*current != NULL) {
+      //key exists: replace its value
+      if (key == (*current)->key) {
+        (*current)->value = value;
+        return;
+      }
+      //no such key
+      else if (key < (*current)->key) {
+        current = &((*current)->left);
+      }
+      else {
+        current = &((*current)->right);
+      }
+    }
+    *current = new Node(key, value);
+  }
+
+  //lookup
+  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
+    Node * current = root;
+    while (current != NULL) {
+      if (current->key == key) {
+        return current->value;
+      }
+      else if (key < current->key) {
+        current = current->left;
+      }
+      else {
+        current = current->right;
+      }
+    }
+    throw std::invalid_argument("the key is not found");
+  }
+
+  virtual void remove(const K & key) {
+    Node ** current = &root;
+    Node * temp = NULL;
+    //find key
+    while (*current != NULL) {
+      //current Node needs to be removed
+      if ((*current)->key == key) {
+        //one node or zero node
+        if ((*current)->left == NULL) {
+          temp = (*current)->right;
+          delete *current;
+          *current = temp;
+        }
+        else if ((*current)->right == NULL) {
+          temp = (*current)->left;
+          delete *current;
+          *current = temp;
         }
         else {
-          if (traversal->left == NULL) {
-            traversal->left = new Node(key, value);
-            break;
+          //go left once
+          Node ** toReplace = current;
+          current = &((*current)->left);
+          //follow right
+          while ((*current)->right != NULL) {
+            current = &((*current)->right);
           }
-          else {
-            traversal = traversal->left;
-          }
+          (*toReplace)->key = (*current)->key;
+          const V value = (*current)->value;
+          temp = (*current)->left;
+          delete *current;
+          *current = temp;
+          add((*toReplace)->key, value);
         }
       }
-    }
-  }
-  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
-    Node * target = findNode(this->root, key);
-    if (target == NULL) {
-      throw std::invalid_argument("key not found");
-    }
-    else {
-      return target->value;
-    }
-  }
-  virtual void remove(const K & key) { root = removeHelper(root, key); }
-  Node * removeHelper(Node * curr, const K & key) {
-    if (curr == NULL) {
-      return curr;
-    }
-    if (curr->key == key) {
-      if (curr->left == NULL) {
-        Node * temp = curr->right;
-        delete curr;
-        return temp;
-      }
-      else if (curr->right == NULL) {
-        Node * temp = curr->left;
-        delete curr;
-        return temp;
+      else if (key < (*current)->key) {
+        current = &(*current)->left;
       }
       else {
-        K kTarget = minKey(curr->right);
-        V vTarget = lookup(kTarget);
-        curr->right = removeHelper(curr->right, kTarget);
-        curr->key = kTarget;
-        curr->value = vTarget;
-        return curr;
+        current = &(*current)->right;
       }
-    }
-    else if (key < curr->key) {
-      curr->left = removeHelper(curr->left, key);
-      return curr;
-    }
-    else {
-      curr->right = removeHelper(curr->right, key);
-      return curr;
     }
   }
-  K minKey(Node * curr) {
-    assert(curr != NULL);
-    Node * traversal = curr;
-    K temp = curr->key;
-    while (traversal != NULL) {
-      temp = traversal->key;
-      traversal = traversal->left;
+
+  // for personal testcases, print out the tree order
+  void inorder() { inorder_printer(root); }
+
+  void inorder_printer(Node * root) {
+    if (root != NULL) {
+      inorder_printer(root->left);
+      std::cout << root->key << " ";
+      inorder_printer(root->right);
     }
-    return temp;
   }
-  Node * findNode(Node * curr, const K & key) const {
-    Node * traversal = curr;
-    while (traversal != NULL) {
-      if (key == traversal->key) {
-        return traversal;
-      }
-      else if (key > traversal->key) {
-        traversal = traversal->right;
-      }
-      else {
-        traversal = traversal->left;
-      }
-    }
-    return traversal;
-  }
-  virtual ~BstMap<K, V>() {}
 };
+
 #endif
