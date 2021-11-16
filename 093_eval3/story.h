@@ -3,31 +3,58 @@
 #include <set>
 #include <stack>
 #include <string>
+#include <vector>
 
 #include "page.h"
 //step2
-std::string getPname(int pageNum, const char * directory) {
+int getInputNum(int pageAmount) {
+  std::string line;
+  int inputNum = 0;
+  while (true) {
+    getline(std::cin, line);
+    const char * number = line.c_str();
+    inputNum = atoi(number);
+    if (inputNum <= 0 || inputNum > pageAmount) {
+      std::cout << "That is not a valid choice, please try again" << std::endl;
+    }
+    else {
+      break;
+    }
+  }
+  return inputNum;
+}
+const char * getPname(int pageNum, const char * directory) {
   std::string pagename;
   std::string str1(directory);
   std::string str2("/page");
   std::string str3(std::to_string(pageNum));
   std::string str4(".txt");
   pagename = str1 + str2 + str3 + str4;
-  return pagename;
+  const char * name = pagename.c_str();  //convert std::string to a char
+  return name;
 }
 std::vector<page *> readStory(char * directory) {
   std::vector<page *> pages;
   int pageNum = 1;
+  //check if page1.txt exist
+  std::ifstream first;
+  first.open(getPname(pageNum, directory));
+  if (!first.good()) {
+    std::cerr << "page1.txt do not exist in the story" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  //read from page1 until story end and store all pages into the vector
   while (true) {
-    std::string pagename = getPname(pageNum, directory);
+    const char * pagename = getPname(pageNum, directory);
     std::ifstream pagefile;
     pagefile.open(pagename);
     if (!pagefile.good()) {
-      std::cerr << "Can not open file,story end " << pagename << std::endl;
+      std::cout << "story end " << pagename << std::endl;
       break;
     }
     page * currpage = new page(pagefile, pageNum);
     pages.push_back(currpage);
+    delete currpage;
     pageNum++;
   }
   return pages;
@@ -77,5 +104,16 @@ bool checkpages(std::vector<page *> pages) {
     return false;
   }
   return true;
+}
+void printStory(std::vector<page *> pages) {
+  std::vector<page *>::iterator it = pages.begin();
+  int pageNum = 1;
+  while (true) {
+    printFile(pages[pageNum - 1]);
+    if (pages[pageNum - 1]->result == "WIN" || pages[pageNum - 1]->result == "LOSE") {
+      break;
+    }
+    pageNum = getInputNum(pages.size());
+  }
 }
 #endif

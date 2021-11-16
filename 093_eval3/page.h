@@ -12,14 +12,14 @@ class myexception : public std::exception {
 };
 class page {
  public:
+  int pageNum;
   std::vector<std::string> choice;
   std::string result;
   std::vector<std::string> text;
 
   std::vector<int> choiceNum;
-  int pageNum;
 
-  page(std::ifstream & f) {
+  page(std::ifstream & f, int number) : pageNum(number) {
     std::string line;
     std::string newLine;
     std::string str1("WIN");
