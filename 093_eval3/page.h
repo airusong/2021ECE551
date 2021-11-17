@@ -84,19 +84,13 @@ void printFile(page * ans) {
   int pos;
   std::string temp;
   if (ans->result.compare("WIN") == 0) {
-    std::cout << "Congratulations! You have won. Hooray!"
-              << "\n"
-              << std::endl;
+    std::cout << "Congratulations! You have won. Hooray!" << std::endl;
   }
   else if (ans->result.compare("LOSE") == 0) {
-    std::cout << "Sorry, you have lost. Better luck next time!"
-              << "\n"
-              << std::endl;
+    std::cout << "Sorry, you have lost. Better luck next time!" << std::endl;
   }
   else {
-    std::cout << "What would you like to do?"
-              << "\n"
-              << std::endl;
+    std::cout << "What would you like to do?" << std::endl;
     std::vector<std::string>::iterator it2 = ans->choice.begin();
     while (it2 != ans->choice.end()) {
       temp = *it2;
