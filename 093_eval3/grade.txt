@@ -1,6 +1,6 @@
-Grading at 11/17/2021:04:34:37.004817
-For commit ID ed855e5492123c2ce913c57d19c29580e1600aa8
-Grading at Tue Nov 16 23:34:23 EST 2021
+Grading at 11/17/2021:14:32:09.819398
+For commit ID 39f5c64949f66cc5219ef7248ed2cdf69857ec7e
+Grading at Wed Nov 17 09:31:56 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -48,24 +48,14 @@ Input to story is
 
 +-----------------------------------------------------------------------+
 Test case 11 (success): cyoa-step2 /usr/local/ece551/cyoa/story1 < pregrader_input.txt
-20a21
-> 
-43a45
-> 
-62a65
-> 
-Your file did not match the expected output
+Your file matched the expected output
 Input to story is
 3
 2
 
 +-----------------------------------------------------------------------+
 Test case 12 (success): cyoa-step2 /usr/local/ece551/cyoa/story1 < pregrader_input.txt
-20a21
-> 
-47a49
-> 
-Your file did not match the expected output
+Your file matched the expected output
 Input to story is
 1
 2
@@ -74,24 +64,14 @@ Input to story is
 
 +-----------------------------------------------------------------------+
 Test case 13 (success): cyoa-step2 /usr/local/ece551/cyoa/story2 < pregrader_input.txt
-11a12
-> 
-20a22
-> 
-28a31
-> 
-37a41
-> 
-Your file did not match the expected output
+Your file matched the expected output
 Input to story is
 3
 
 +-----------------------------------------------------------------------+
 Test case 14 (success): cyoa-step2 /usr/local/ece551/cyoa/story2 < pregrader_input.txt
-11a12
-> 
-Your file did not match the expected output
-Step 2: Failed test cases as above
+Your file matched the expected output
+Step 2: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step3
 The code did not compile!
