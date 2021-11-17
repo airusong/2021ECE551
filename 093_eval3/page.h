@@ -89,7 +89,7 @@ void printFile(page * ans) {
               << std::endl;
   }
   else if (ans->result.compare("LOSE") == 0) {
-    std::cout << "Sorry, you have lost. Better luck next time"
+    std::cout << "Sorry, you have lost. Better luck next time!"
               << "\n"
               << std::endl;
   }
