@@ -9,12 +9,13 @@
 #include "page.h"
 //step2
 int getInputNum(int size) {
-  std::string line;
+  //std::string line;
   int inputNum = 0;
   while (true) {
-    getline(std::cin, line);
-    const char * number = line.c_str();
-    inputNum = atoi(number);
+    std::cin >> inputNum;
+    //getline(std::cin, line);
+    //const char * number = line.c_str();
+    //inputNum = atoi(number);
     if (inputNum <= 0 || inputNum > size) {
       std::cout << "That is not a valid choice, please try again" << std::endl;
     }
