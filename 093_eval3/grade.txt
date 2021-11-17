@@ -1,6 +1,6 @@
-Grading at 11/17/2021:03:53:01.057217
-For commit ID dc92a238f2e9bdcbd4629ba80d143b3ebb7aaeb7
-Grading at Tue Nov 16 22:52:47 EST 2021
+Grading at 11/17/2021:03:56:14.747381
+For commit ID 68bf02544af9a06adbb4ca5e2a48cf7ba8807f7a
+Grading at Tue Nov 16 22:56:01 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -49,25 +49,25 @@ Input to story is
 +-----------------------------------------------------------------------+
 Test case 11 (success): cyoa-step2 /usr/local/ece551/cyoa/story1 < pregrader_input.txt
 22,24c22,24
-< 1. Choose the magic whistle.
-< 2. Choose the magic shoes.
-< 3. Choose the magic toaster.
+<  1.Choose the magic whistle.
+<  2.Choose the magic shoes.
+<  3.Choose the magic toaster.
 ---
 >  1. Choose the magic whistle.
 >  2. Choose the magic shoes.
 >  3. Choose the magic toaster.
 46,48c46,48
-< 1. Go to Denevieve for help.
-< 2. Go to Grew for help.
-< 3. Go alone.
+<  1.Go to Denevieve for help.
+<  2.Go to Grew for help.
+<  3.Go alone.
 ---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
 >  3. Go alone.
 66,68c66,68
-< 1. Silent Night, accompanied by raven calls
-< 2. Angels We Have Heard on High, accompanied by roosters crowing
-< 3. Bohemian Rhapsody, accompanied by the magestic call of a bald eagle
+<  1.Silent Night, accompanied by raven calls
+<  2.Angels We Have Heard on High, accompanied by roosters crowing
+<  3.Bohemian Rhapsody, accompanied by the magestic call of a bald eagle
 ---
 >  1. Silent Night, accompanied by raven calls
 >  2. Angels We Have Heard on High, accompanied by roosters crowing
@@ -85,17 +85,17 @@ Input to story is
 +-----------------------------------------------------------------------+
 Test case 12 (success): cyoa-step2 /usr/local/ece551/cyoa/story1 < pregrader_input.txt
 22,24c22,24
-< 1. Choose the magic whistle.
-< 2. Choose the magic shoes.
-< 3. Choose the magic toaster.
+<  1.Choose the magic whistle.
+<  2.Choose the magic shoes.
+<  3.Choose the magic toaster.
 ---
 >  1. Choose the magic whistle.
 >  2. Choose the magic shoes.
 >  3. Choose the magic toaster.
 50,52c50,52
-< 1. Go to Denevieve for help.
-< 2. Go to Grew for help.
-< 3. Go alone.
+<  1.Go to Denevieve for help.
+<  2.Go to Grew for help.
+<  3.Go alone.
 ---
 >  1. Go to Denevieve for help.
 >  2. Go to Grew for help.
@@ -112,28 +112,28 @@ Input to story is
 +-----------------------------------------------------------------------+
 Test case 13 (success): cyoa-step2 /usr/local/ece551/cyoa/story2 < pregrader_input.txt
 13,15c13,15
-< 1. Try to sneak past the sleeping dragon
-< 2. Leave the dragon's cave and go home
-< 3. Stab the dragon in the neck
+<  1.Try to sneak past the sleeping dragon
+<  2.Leave the dragon's cave and go home
+<  3.Stab the dragon in the neck
 ---
 >  1. Try to sneak past the sleeping dragon
 >  2. Leave the dragon's cave and go home
 >  3. Stab the dragon in the neck
 23,24c23,24
-< 1. Pick up the ruby
-< 2. Pass the ruby to explore the rest of the hoard
+<  1.Pick up the ruby
+<  2.Pass the ruby to explore the rest of the hoard
 ---
 >  1. Pick up the ruby
 >  2. Pass the ruby to explore the rest of the hoard
 32,33c32,33
-< 1. Put on the cloak
-< 2. Open the book
+<  1.Put on the cloak
+<  2.Open the book
 ---
 >  1. Put on the cloak
 >  2. Open the book
 42,43c42,43
-< 1. Exult in your skillset and go home
-< 2. Stab the dragon in the neck
+<  1.Exult in your skillset and go home
+<  2.Stab the dragon in the neck
 ---
 >  1. Exult in your skillset and go home
 >  2. Stab the dragon in the neck
@@ -146,9 +146,9 @@ Input to story is
 +-----------------------------------------------------------------------+
 Test case 14 (success): cyoa-step2 /usr/local/ece551/cyoa/story2 < pregrader_input.txt
 13,15c13,15
-< 1. Try to sneak past the sleeping dragon
-< 2. Leave the dragon's cave and go home
-< 3. Stab the dragon in the neck
+<  1.Try to sneak past the sleeping dragon
+<  2.Leave the dragon's cave and go home
+<  3.Stab the dragon in the neck
 ---
 >  1. Try to sneak past the sleeping dragon
 >  2. Leave the dragon's cave and go home
