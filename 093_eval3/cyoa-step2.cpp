@@ -9,8 +9,9 @@ int main(int argc, char ** argv) {
   std::vector<page *> pages = readStory(argv[1]);
   bool result = checkpages(pages);
   if (result == false) {
-    return EXIT_FAILURE;
+    std::cout << " page problem" << std::endl;
   }
   printStory(pages);
+  deletePages(pages);
   return EXIT_SUCCESS;
 }

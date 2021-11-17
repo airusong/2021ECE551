@@ -18,7 +18,7 @@ class page {
   std::vector<std::string> text;
 
   std::vector<int> choiceNum;
-
+  int choiceSize;
   page(std::ifstream & f, int number) : pageNum(number) {
     std::string line;
     std::string newLine;
@@ -27,6 +27,7 @@ class page {
     int flag = 0;
     int pos1 = 0;
     int num = 0;
+    int choiceSize = 0;
     while (getline(f, line)) {
       if (line[0] == '#') {
         // line.clear();
@@ -47,6 +48,7 @@ class page {
         pos1 = line.find(":");
         num = atoi(line.substr(0, pos1).c_str());
         choiceNum.push_back(num);
+        choiceSize++;
       }
     }
     std::string line2;
@@ -69,6 +71,7 @@ class page {
       // }
     }
   }
+  int getChoiceSize() { return choiceNum.size(); }
 };
 void printFile(page * ans) {
   std::vector<std::string>::iterator it = ans->text.begin();
