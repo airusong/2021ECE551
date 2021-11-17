@@ -11,8 +11,8 @@ int main(int argc, char ** argv) {
     std::cerr << "Can not open file " << argv[1] << std::endl;
     return EXIT_FAILURE;
   }
-  //int pageNum = 0;
-  page * ans = new page(pageFile, 0);
+  int pageNum = 0;
+  page * ans = new page(pageFile, pageNum);
   printFile(ans);
   pageFile.close();
   delete ans;
