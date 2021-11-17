@@ -102,7 +102,7 @@ void printFile(page * ans) {
       temp = *it2;
       pos = temp.find(":");
       temp = temp.substr(pos + 1);
-      std::cout << count << "." << temp << "\n";
+      std::cout << count << ". " << temp << "\n";
       count++;
       ++it2;
       temp.clear();
