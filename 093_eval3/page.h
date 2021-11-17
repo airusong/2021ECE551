@@ -90,7 +90,9 @@ void printFile(page * ans) {
     std::cout << "Sorry, you have lost. Better luck next time!" << std::endl;
   }
   else {
-    std::cout << "What would you like to do?" << std::endl;
+    std::cout << "What would you like to do?"
+              << "\n"
+              << std::endl;
     std::vector<std::string>::iterator it2 = ans->choice.begin();
     while (it2 != ans->choice.end()) {
       temp = *it2;
