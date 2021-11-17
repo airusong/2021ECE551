@@ -1,2 +1,0 @@
-cyoa-step1:cyoa-step1.cpp page.h 
-	g++ -o cyoa-step1 -ggdb3 -Wall -Werror -std=c++11 cyoa-step1.cpp
