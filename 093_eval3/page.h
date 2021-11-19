@@ -90,6 +90,9 @@ class page {
       this->dist = rhs.dist;
       this->result = rhs.result;
       this->choiceSize = rhs.choiceSize;
+      this->choice.clear();
+      this->text.clear();
+      this->choiceNum.clear();
       for (size_t i = 0; i < rhs.choice.size(); i++) {
         this->choice.push_back(rhs.choice[i]);
       }

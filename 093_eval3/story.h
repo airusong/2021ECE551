@@ -147,9 +147,9 @@ void findPath(std::vector<page> & pages) {
     adjList.pop();
     //return the top of the page in stack;
     int distance = currpage.dist;
-    if (currpage.result == "WIN" ||
-        currpage.result == "LOSE") {  //find the exit of the story
-      break;
+    if (currpage.result == "WIN" || currpage.result == "LOSE") {
+      //find the exit of the story
+      continue;
     }
     for (int i = 0; i < currpage.getChoiceSize(); i++) {
       if (pages[currpage.choiceNum[i] - 1].visited == false) {
