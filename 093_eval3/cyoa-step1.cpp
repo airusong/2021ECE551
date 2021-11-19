@@ -12,9 +12,9 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   int pageNum = 0;
-  page * ans = new page(pageFile, pageNum);
+  page ans(pageFile, pageNum);
   printFile(ans);
   pageFile.close();
-  delete ans;
+  //delete ans;
   return EXIT_SUCCESS;
 }

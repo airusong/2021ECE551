@@ -3,7 +3,7 @@
 
 int main(int argc, char ** argv) {
   if (argc != 2) {
-    std::cerr << "Usage for step2 story" << std::endl;
+    std::cerr << "Usage for step3 story" << std::endl;
     return EXIT_FAILURE;
   }
   std::vector<page> pages = readStory(argv[1]);
@@ -11,7 +11,7 @@ int main(int argc, char ** argv) {
   if (result == false) {
     std::cout << " page problem" << std::endl;
   }
-  printStory(pages);
-  //deletePages(pages);
+  findPath(pages);
+  printpageDepth(pages);
   return EXIT_SUCCESS;
 }

@@ -1,6 +1,7 @@
 #ifndef _STORY_H__
 #define _STORY_H__
 #include <iostream>
+#include <queue>
 #include <set>
 #include <stack>
 #include <string>
@@ -34,8 +35,8 @@ std::string getPname(int & pageNum, const char * directory) {
   pagename = str1 + str2 + str3 + str4;
   return pagename;
 }
-std::vector<page *> readStory(char * directory) {
-  std::vector<page *> pages;
+std::vector<page> readStory(char * directory) {
+  std::vector<page> pages;
   int pageNum = 1;
   //check if page1.txt exist
   std::ifstream first;
@@ -57,30 +58,30 @@ std::vector<page *> readStory(char * directory) {
       //  std::cout << "page " << pageNum - 1 << "end" << std::endl;
       break;
     }
-    page * currpage = new page(pagefile, pageNum);
+    page currpage(pagefile, pageNum);
     pages.push_back(currpage);
     pagefile.close();
     pageNum++;
   }
   return pages;
 }
-bool checkpages(std::vector<page *> & pages) {
+bool checkpages(std::vector<page> & pages) {
   int pageAmount = pages.size();
-  std::vector<page *>::iterator it = pages.begin();
+  std::vector<page>::iterator it = pages.begin();
   std::set<int> referPage;
   bool result = true;
   //make sure every page that is referenced by a choice is valid
   while (it != pages.end()) {
-    int size = (*it)->getChoiceSize();
+    int size = (*it).getChoiceSize();
     for (int j = 0; j < size; j++) {
-      if ((*it)->choiceNum[j] > pageAmount || (*it)->choiceNum[j] <= 0) {
+      if ((*it).choiceNum[j] > pageAmount || (*it).choiceNum[j] <= 0) {
         std::cerr << "page that is referenced by a choice is invalid" << std::endl;
         result = false;
       }
       else {
-        if (referPage.count(((*it)->choiceNum[j])) == 0) {
-          referPage.insert(((*it)->choiceNum[j]));
-          //  std::cout << (*it)->choiceNum[j] << std::endl;
+        if (referPage.count(((*it).choiceNum[j])) == 0) {
+          referPage.insert(((*it).choiceNum[j]));
+          //  std::cout << (*it).choiceNum[j] << std::endl;
         }
       }
     }
@@ -98,10 +99,10 @@ bool checkpages(std::vector<page *> & pages) {
   int winFlag = 0;
   int loseFlag = 0;
   while (it != pages.end()) {
-    if ((*it)->result == "WIN") {
+    if ((*it).result == "WIN") {
       winFlag = 1;
     }
-    if ((*it)->result == "LOSE") {
+    if ((*it).result == "LOSE") {
       loseFlag = 1;
     }
     ++it;
@@ -112,25 +113,64 @@ bool checkpages(std::vector<page *> & pages) {
   }
   return result;
 }
-void printStory(std::vector<page *> & pages) {
+void printStory(std::vector<page> & pages) {
   int pageNumber = 1;
   int pageChoice = 0;
   while (true) {
     printFile(pages[pageNumber - 1]);
-    if (pages[pageNumber - 1]->result == "WIN" ||
-        pages[pageNumber - 1]->result == "LOSE") {
+    if (pages[pageNumber - 1].result == "WIN" || pages[pageNumber - 1].result == "LOSE") {
       break;
     }
     //get the number user put in
-    pageChoice = getInputNum(pages[pageNumber - 1]->getChoiceSize());
-    pageNumber = pages[pageNumber - 1]->choiceNum[pageChoice - 1];
+    pageChoice = getInputNum(pages[pageNumber - 1].getChoiceSize());
+    pageNumber = pages[pageNumber - 1].choiceNum[pageChoice - 1];
   }
 }
-void deletePages(std::vector<page *> & pages) {
-  std::vector<page *>::iterator it = pages.begin();
-  int size = pages.size();
-  for (int i = 0; i < size; i++) {
-    delete *it;
+
+//void deletePages(std::vector<page *> & pages) {
+//  std::vector<page *>::iterator it = pages.begin();
+//  int size = pages.size();
+//  for (int i = 0; i < size; i++) {
+//    delete *it;
+//    ++it;
+//  }
+//}
+//step3
+void findPath(std::vector<page> & pages) {
+  std::queue<page> adjList;
+  pages[0].setDistance(0);  //change the dist of page1 to 0
+  pages[0].visited = true;  // change the visited of page1 to true
+  adjList.push(pages[0]);   //push page1 into stack
+  //page currpage = pages[0];
+  while (!adjList.empty()) {
+    page currpage = adjList.front();
+    adjList.pop();
+    //return the top of the page in stack;
+    int distance = currpage.dist;
+    if (currpage.result == "WIN" ||
+        currpage.result == "LOSE") {  //find the exit of the story
+      break;
+    }
+    for (int i = 0; i < currpage.getChoiceSize(); i++) {
+      if (pages[currpage.choiceNum[i] - 1].visited == false) {
+        pages[currpage.choiceNum[i] - 1].visited = true;
+        pages[currpage.choiceNum[i] - 1].prev = &currpage;
+        pages[currpage.choiceNum[i] - 1].setDistance(distance + 1);
+        adjList.push(pages[currpage.choiceNum[i] - 1]);
+      }
+    }
+  }
+}
+void printpageDepth(std::vector<page> & pages) {
+  std::vector<page>::iterator it = pages.begin();
+  while (it != pages.end()) {
+    if ((*it).visited == true) {
+      std::cout << "Page " << (*it).pageNum << ":" << (*it).dist << std::endl;
+    }
+    else {
+      std::cout << "Page " << (*it).pageNum << " "
+                << "is not reachable" << std::endl;
+    }
     ++it;
   }
 }
