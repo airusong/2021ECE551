@@ -1,5 +1,6 @@
 #ifndef _STORY_H__
 #define _STORY_H__
+#include <algorithm>
 #include <iostream>
 #include <queue>
 #include <set>
@@ -9,14 +10,11 @@
 
 #include "page.h"
 //step2
+//get the choice number user input
 int getInputNum(int size) {
-  //std::string line;
   int inputNum = 0;
   while (true) {
     std::cin >> inputNum;
-    //getline(std::cin, line);
-    //const char * number = line.c_str();
-    //inputNum = atoi(number);
     if (inputNum <= 0 || inputNum > size) {
       std::cout << "That is not a valid choice, please try again" << std::endl;
     }
@@ -26,6 +24,7 @@ int getInputNum(int size) {
   }
   return inputNum;
 }
+//get the pagename
 std::string getPname(int & pageNum, const char * directory) {
   std::string pagename;
   std::string str1(directory);
@@ -35,6 +34,7 @@ std::string getPname(int & pageNum, const char * directory) {
   pagename = str1 + str2 + str3 + str4;
   return pagename;
 }
+//read each page of the story
 std::vector<page> readStory(char * directory) {
   std::vector<page> pages;
   int pageNum = 1;
@@ -48,14 +48,13 @@ std::vector<page> readStory(char * directory) {
     exit(EXIT_FAILURE);
   }
   first.close();
-  //read from page1 until story end and store all pages into the vector
+  //read from page1 until story end and store all pages into the vector page
   while (true) {
     std::string pageNamestring = getPname(pageNum, directory);
     const char * pageName = pageNamestring.c_str();
     std::ifstream pagefile;
     pagefile.open(pageName);
     if (!pagefile.good()) {
-      //  std::cout << "page " << pageNum - 1 << "end" << std::endl;
       break;
     }
     page currpage(pagefile, pageNum);
@@ -65,6 +64,7 @@ std::vector<page> readStory(char * directory) {
   }
   return pages;
 }
+//check if all the pages are valid
 bool checkpages(std::vector<page> & pages) {
   int pageAmount = pages.size();
   std::vector<page>::iterator it = pages.begin();
@@ -81,7 +81,6 @@ bool checkpages(std::vector<page> & pages) {
       else {
         if (referPage.count(((*it).choiceNum[j])) == 0) {
           referPage.insert(((*it).choiceNum[j]));
-          //  std::cout << (*it).choiceNum[j] << std::endl;
         }
       }
     }
@@ -113,6 +112,7 @@ bool checkpages(std::vector<page> & pages) {
   }
   return result;
 }
+//print story
 void printStory(std::vector<page> & pages) {
   int pageNumber = 1;
   int pageChoice = 0;
@@ -126,16 +126,8 @@ void printStory(std::vector<page> & pages) {
     pageNumber = pages[pageNumber - 1].choiceNum[pageChoice - 1];
   }
 }
-
-//void deletePages(std::vector<page *> & pages) {
-//  std::vector<page *>::iterator it = pages.begin();
-//  int size = pages.size();
-//  for (int i = 0; i < size; i++) {
-//    delete *it;
-//    ++it;
-//  }
-//}
 //step3
+//using a BFS to find the depth of the pages
 void findPath(std::vector<page> & pages) {
   std::queue<page> adjList;
   pages[0].setDistance(0);  //change the dist of page1 to 0
@@ -174,4 +166,65 @@ void printpageDepth(std::vector<page> & pages) {
     ++it;
   }
 }
+//step4
+void tracePath(std::vector<page> & pages,
+               page & startpage,
+               std::vector<int> pagepath,
+               std::vector<page> path,
+               std::vector<std::vector<page> > & result) {
+  page currpage = startpage;
+  //make sure there is no cycle in the path
+  if ((std::find(pagepath.begin(), pagepath.end(), currpage.pageNum)) != pagepath.end()) {
+    return;
+  }
+  path.push_back(currpage);
+  pagepath.push_back(currpage.pageNum);
+  if (currpage.result == "WIN") {
+    result.push_back(path);
+    return;
+  }
+  //DFS, go down the path until found the win page,then go down another path in the same way.
+  for (int i = 0; i < currpage.getChoiceSize(); i++) {
+    tracePath(pages, pages[currpage.choiceNum[i] - 1], pagepath, path, result);
+  }
+}
+//make sure the choice of the current page by the pageNumber of the nextpage
+int findChoice(page & page, int & nextpage) {
+  int i = 0;
+  int choice = 0;
+  for (i = 0; i < page.getChoiceSize(); i++) {
+    if (nextpage == page.choiceNum[i]) {
+      choice = i + 1;
+      break;
+    }
+  }
+  return choice;
+}
+//store each win path in vector path and store all the path in vector result
+//print them by traverse the vector in a for loop
+void winPath(std::vector<page> & pages) {
+  std::vector<page> path;
+  std::vector<std::vector<page> > result;
+  std::vector<int> pagepath;  //store the pageNumber that has been visited
+  tracePath(pages, pages[0], pagepath, path, result);
+  std::vector<std::vector<page> >::iterator it = result.begin();
+  while (it != result.end()) {
+    std::vector<page>::iterator it2 = (*it).begin();
+    while (it2 != (*it).end()) {
+      if (it2 != (*it).end() - 1) {
+        int pagenum = (*it2).pageNum;
+        page currpage = *it2;
+        ++it2;
+        std::cout << pagenum << "(" << findChoice(currpage, (*(it2)).pageNum) << "),";
+      }
+      else {
+        std::cout << (*it2).pageNum << "(win)";
+        ++it2;
+      }
+    }
+    std::cout << std::endl;
+    ++it;
+  }
+}
+
 #endif

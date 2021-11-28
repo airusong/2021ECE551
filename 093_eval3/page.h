@@ -65,24 +65,14 @@ class page {
       if (flag == 0 && line2[0] != '#') {
         text.push_back(line2);
         line2.clear();
-        //  continue;
       }
-
-      // flag = 1;
-      //  std::cout << line2 << std::endl;
-      //  line2.clear();
-      //  continue;
-      // }
-      //if (flag == 1) {
-      // text.push_back(line2);
-
-      // std::cout << line2 << std::endl;
-      // }
     }
   }
   int getChoiceSize() { return choiceNum.size(); }
   int getDistance() { return dist; }
   void setDistance(int distance) { this->dist = distance; }
+  // void setPrev(page * page) { this->prev = page; }
+  // page * getPrev() { return prev; }
   page & operator=(const page & rhs) {
     if (this != &rhs) {
       this->pageNum = rhs.pageNum;
@@ -90,9 +80,9 @@ class page {
       this->dist = rhs.dist;
       this->result = rhs.result;
       this->choiceSize = rhs.choiceSize;
-      this->choice.clear();
-      this->text.clear();
-      this->choiceNum.clear();
+      //      this->choice.clear();
+      // this->text.clear();
+      //this->choiceNum.clear();
       for (size_t i = 0; i < rhs.choice.size(); i++) {
         this->choice.push_back(rhs.choice[i]);
       }
